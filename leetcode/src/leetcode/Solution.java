@@ -8,6 +8,11 @@ public class Solution {
 	     TreeNode right;
 	     TreeNode(int x) { val = x; }
 	}
+	public class ListNode {
+		int val;
+		ListNode next;
+		ListNode(int x) { val = x; }
+	}
 	//leetcode question 104
     public int maxDepth(TreeNode root) {
         if(root==null) return 0;
@@ -27,11 +32,40 @@ public class Solution {
         result^=0;
         return result;
     }
+    //leetcode question 226 
+    public TreeNode invertTree(TreeNode root) {
+        if(root==null) return null;
+        TreeNode temp=root.left;
+        root.left=invertTree(root.right);
+        root.right=invertTree(temp);
+        return root;
+    }
+    //leetcode question 237
+  	 public void deleteNode(ListNode node) {
+          if(node.next!=null){
+              node.val=node.next.val;
+              node.next=node.next.next;
+          }
+          else 
+              node=null;
+  	}
     //leetcode question 258
     public int addDigits(int num) {
         return num-9*((num-1)/9);
     }
-    
+    //leetcode question 283
+    public void moveZeroes(int[] nums) {
+        int start=0;//start position
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=0){
+                nums[start]=nums[i];
+                start=start+1;
+            }
+        }
+        for(int i=start;i<nums.length;i++){
+            nums[i]=0;
+        }
+    }
 	//leetcode question 292
 	public boolean canWinNim(int n) {
         if (n<4) return true;
@@ -39,7 +73,5 @@ public class Solution {
         return true; 
     }
 	
-  
-
 }
  
