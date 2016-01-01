@@ -1,6 +1,5 @@
 package leetcode;
-import java.util.HashMap;
-import java.util.HashSet;
+
 public class Solution {
 	
 	public class TreeNode {
@@ -14,7 +13,6 @@ public class Solution {
 		ListNode next;
 		ListNode(int x) { val = x; }
 	}
-	
 	//leetcode question 100
 	public boolean isSameTree(TreeNode p, TreeNode q) {
         if(p==null&&q==null) return true;
@@ -56,23 +54,6 @@ public class Solution {
         result^=0;
         return result;
     }
-    //leetcode question 171
-    public int titleToNumber(String s) {
-        int result=0;
-        for(int i=0;i<s.length();i++){
-            result=(s.charAt(i)-'A'+1)+result*26;
-        }
-        return result;
-    }
-    //leetcode question 217
-    public boolean containsDuplicate(int[] nums) {
-        HashSet<Integer> myset=new HashSet<Integer>();
-        for(int i=0;i<nums.length;i++){
-            if(myset.contains(nums[i])) return true;
-            else myset.add(nums[i]);
-        }
-        return false;
-    }
     //leetcode question 226 
     public TreeNode invertTree(TreeNode root) {
         if(root==null) return null;
@@ -90,49 +71,6 @@ public class Solution {
           else 
               node=null;
   	}
-  	//leetcode question 238
-  	public int[] productExceptSelf(int[] nums) {
-        int [] left=new int[nums.length];
-        int [] right=new int[nums.length];
-        left[0]=1;
-        for(int i =1 ;i<nums.length;i++){
-            left[i]=left[i-1]*nums[i-1];
-        }
-        right[nums.length-1]=1;
-        for(int i=nums.length-2;i>=0;i--){
-            right[i]=right[i+1]*nums[i+1];
-        }
-        int [] result=new int[nums.length];
-        for(int i=0;i<nums.length;i++){
-            result[i]=left[i]*right[i];
-        }
-        return result;
-    }
-  	//leetcode question 242
-  	public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length()) return false;
-        HashMap<Character,Integer> mymap=new HashMap<Character,Integer>();
-        for(int i=0;i<s.length();i++){
-            if(mymap.containsKey(s.charAt(i))){
-                mymap.put(s.charAt(i),mymap.get(s.charAt(i))+1);
-            }
-            else{
-                mymap.put(s.charAt(i),1);
-            }
-        }
-        for(int i=0;i<t.length();i++){
-            if(mymap.containsKey(t.charAt(i))){
-                mymap.put(t.charAt(i),mymap.get(t.charAt(i))-1);
-                if(mymap.get(t.charAt(i))==0){
-                    mymap.remove(t.charAt(i));
-                }
-            }
-            else{
-                return false;
-            }
-        }
-        return mymap.isEmpty();
-    }
     //leetcode question 258
     public int addDigits(int num) {
         return num-9*((num-1)/9);

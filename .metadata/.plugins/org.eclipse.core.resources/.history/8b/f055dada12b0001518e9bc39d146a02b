@@ -1,6 +1,5 @@
 package leetcode;
-import java.util.HashMap;
-import java.util.HashSet;
+
 public class Solution {
 	
 	public class TreeNode {
@@ -56,23 +55,6 @@ public class Solution {
         result^=0;
         return result;
     }
-    //leetcode question 171
-    public int titleToNumber(String s) {
-        int result=0;
-        for(int i=0;i<s.length();i++){
-            result=(s.charAt(i)-'A'+1)+result*26;
-        }
-        return result;
-    }
-    //leetcode question 217
-    public boolean containsDuplicate(int[] nums) {
-        HashSet<Integer> myset=new HashSet<Integer>();
-        for(int i=0;i<nums.length;i++){
-            if(myset.contains(nums[i])) return true;
-            else myset.add(nums[i]);
-        }
-        return false;
-    }
     //leetcode question 226 
     public TreeNode invertTree(TreeNode root) {
         if(root==null) return null;
@@ -107,31 +89,6 @@ public class Solution {
             result[i]=left[i]*right[i];
         }
         return result;
-    }
-  	//leetcode question 242
-  	public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length()) return false;
-        HashMap<Character,Integer> mymap=new HashMap<Character,Integer>();
-        for(int i=0;i<s.length();i++){
-            if(mymap.containsKey(s.charAt(i))){
-                mymap.put(s.charAt(i),mymap.get(s.charAt(i))+1);
-            }
-            else{
-                mymap.put(s.charAt(i),1);
-            }
-        }
-        for(int i=0;i<t.length();i++){
-            if(mymap.containsKey(t.charAt(i))){
-                mymap.put(t.charAt(i),mymap.get(t.charAt(i))-1);
-                if(mymap.get(t.charAt(i))==0){
-                    mymap.remove(t.charAt(i));
-                }
-            }
-            else{
-                return false;
-            }
-        }
-        return mymap.isEmpty();
     }
     //leetcode question 258
     public int addDigits(int num) {
