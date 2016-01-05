@@ -84,26 +84,6 @@ public class Solution {
         }
         return result;
     }
-    //leetcode question 191
-    public int hammingWeight(int n) {
-        int count=0;
-        while(n!=0){
-            if((n&1)==1) count+=1;
-            n>>>=1;
-        }
-        return count;
-    }
-    //leetcode question 206
-    public ListNode reverseList(ListNode head) {
-        ListNode prev=null;
-        while(head!=null){
-            ListNode temp=head.next;
-            head.next=prev;
-            prev=head;
-            head=temp;
-        }
-        return prev;
-    }
     //leetcode question 217
     public boolean containsDuplicate(int[] nums) {
         HashSet<Integer> myset=new HashSet<Integer>();
@@ -120,13 +100,6 @@ public class Solution {
         root.left=invertTree(root.right);
         root.right=invertTree(temp);
         return root;
-    }
-    //leetcode question 235
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root.val>=p.val&&root.val<=q.val) return root;
-        else if(root.val>=q.val&&root.val<=p.val) return root;
-        else if(root.val>q.val&&root.val>p.val) return lowestCommonAncestor(root.left,p,q);
-        else return lowestCommonAncestor(root.right,p,q);
     }
     //leetcode question 237
   	 public void deleteNode(ListNode node) {
@@ -210,29 +183,6 @@ public class Solution {
         }
         result[0]^=0;
         result[1]^=0;
-        return result;
-    }
-    //leetcode question 263
-    public boolean isUgly(int num) {
-        if(num==0) return false;
-        while(num%2==0)
-            num/=2;
-        while(num%3==0)
-            num/=3;
-        while(num%5==0)
-            num/=5;
-        return num==1;
-    }
-    //leetcode question 268
-    public int missingNumber(int[] nums) {
-        int result=-1;
-        for(int i=0;i<nums.length;i++){
-            result^=nums[i];
-        }
-        for(int i=0;i<nums.length+1;i++){
-            result^=i;
-        }
-        result^=-1;
         return result;
     }
     //leetcode question 283
