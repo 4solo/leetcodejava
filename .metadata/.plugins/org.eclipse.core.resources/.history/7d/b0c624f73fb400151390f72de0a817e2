@@ -40,20 +40,6 @@ public class Solution {
         }
         return head.next;
     }
-	//leetcode question 9
-	public boolean isPalindrome(int x) {
-        String temp = Integer.toString(x);
-        int start=0;
-        int end=temp.length()-1;
-        while(start<end){
-            if(temp.charAt(start)!=temp.charAt(end)){
-                return false;
-            }
-            start++;
-            end--;
-        }
-        return true;
-    }
 	//leetcode question 75
 	public void sortColors(int[] nums) {
         int [] test=new int[3];

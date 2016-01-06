@@ -1,9 +1,6 @@
 package leetcode;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Stack;
-import java.util.ArrayList;
-import java.util.List;
 public class Solution {
 	
 	public class TreeNode {
@@ -17,60 +14,7 @@ public class Solution {
 		ListNode next;
 		ListNode(int x) { val = x; }
 	}
-	//leetcode question 2
-	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode head=new ListNode(0);
-        ListNode current=head;
-        int carry=0;
-        while(l1!=null||l2!=null){
-            if(l1!=null){
-                carry+=l1.val;
-                l1=l1.next;
-            }
-            if(l2!=null){
-                carry+=l2.val;
-                l2=l2.next;
-            }
-            current.next=new ListNode(carry%10);
-            carry=carry/10;
-            current=current.next;
-        }
-        if(carry!=0){
-            current.next=new ListNode(carry);
-        }
-        return head.next;
-    }
-	//leetcode question 9
-	public boolean isPalindrome(int x) {
-        String temp = Integer.toString(x);
-        int start=0;
-        int end=temp.length()-1;
-        while(start<end){
-            if(temp.charAt(start)!=temp.charAt(end)){
-                return false;
-            }
-            start++;
-            end--;
-        }
-        return true;
-    }
-	//leetcode question 75
-	public void sortColors(int[] nums) {
-        int [] test=new int[3];
-        for(int i=0;i<3;i++){
-            test[i]=0;
-        }
-        for(int i=0;i<nums.length;i++){
-            test[nums[i]]++;
-        }
-        int sum=0;
-        for(int i=0;i<3;i++){
-            for(int j=sum;j<sum+test[i];j++){
-                nums[j]=i;
-            }
-            sum=sum+test[i];
-        }
-    }
+	
 	//leetcode question 100
 	public boolean isSameTree(TreeNode p, TreeNode q) {
         if(p==null&&q==null) return true;
@@ -112,24 +56,6 @@ public class Solution {
         result^=0;
         return result;
     }
-    //leetcode question 144
-    public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> result=new ArrayList<Integer>();
-        Stack<TreeNode> mystack=new Stack<TreeNode>();
-        TreeNode current=root;
-        while(!mystack.empty()||current!=null){
-            if(current!=null){
-                mystack.push(current);
-                result.add(current.val);
-                current=current.left;
-            }
-            else{
-                current=mystack.pop();
-                current=current.right;
-            }
-        }
-        return result;
- }
     //leetcode question 169
     public int majorityElement(int[] nums) {
         int count=0;
@@ -166,34 +92,6 @@ public class Solution {
             n>>>=1;
         }
         return count;
-    }
-    //leetcode question 200
-    public int numIslands(char[][] grid) {
-        int count=0;
-        for(int i=0;i<grid.length;i++){
-            for(int j=0;j<grid[i].length;j++){
-                if(grid[i][j]=='1'){
-                    Explore(grid,i,j);
-                    count++;
-                }
-            }
-        }
-        return count;
-    }
-    private void Explore(char[][]grid,int i,int j){
-        int x=grid.length;
-        int y=grid[0].length;
-        if(i<0||j<0||i>x-1||j>y-1){
-            return;
-        }
-        if(grid[i][j]=='0'){
-            return;
-        }
-        grid[i][j]='0';
-        Explore(grid,i+1,j);
-        Explore(grid,i-1,j);
-        Explore(grid,i,j-1);
-        Explore(grid,i,j+1);
     }
     //leetcode question 206
     public ListNode reverseList(ListNode head) {
